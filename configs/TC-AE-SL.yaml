@@ -1,0 +1,50 @@
+model:
+  image_size: 256
+  latent_dim: 128
+  patch_size: 8             # Spatial compression ratio in ViT patch embdding layer
+  compress_rate_total: 32   # Spatial compression ratio from image to latent
+  compress_rate_stage1: 2   # Spatial compression ratio within ViT blocks
+  compress_type: conv       # Option: [conv, pixel_shuffle]
+  use_ssl: True
+  ssl_cfg:
+    interpolate_antialias: false
+    interpolate_offset: 0.1
+    num_register_tokens: 0
+    num_cls_tokens: 1
+  vitencoder_config:
+    hidden_size: 384
+    image_size: ${model.image_size}
+    initializer_range: 0.02
+    layer_norm_eps: 1e-6
+    layerscale_value: 1.0
+    mlp_ratio: 4
+    num_attention_heads: 6
+    num_channels: 3
+    num_hidden_layers: 12
+    drop_path_rate: 0.0
+    patch_size: ${model.patch_size}
+    qkv_bias: True
+    use_swiglu_ffn: True
+    use_rmsnorm: True
+    use_conv: null
+    conv_proj: null
+    nonlinear: True
+  vitdecoder_config:
+    hidden_size: 1024
+    image_size: ${model.image_size}
+    initializer_range: 0.02
+    layer_norm_eps: 1e-6
+    layerscale_value: 1.0
+    mlp_ratio: 4
+    num_attention_heads: 16
+    num_channels: 3
+    num_hidden_layers: 24
+    drop_path_rate: 0.1
+    patch_size: ${model.patch_size}
+    qkv_bias: True
+    use_swiglu_ffn: False
+    use_conv: null
+    conv_proj: null
+    nonlinear: True
+
+    
