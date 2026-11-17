@@ -16,7 +16,7 @@ tensorflow-cpu==2.13.1
 tensorflow-estimator==2.13.0
 tensorflow-io-gcs-filesystem==0.34.0
 safetensors==0.4.5
-nbconvert==7.16.6
+nbconvert==7.17.2
 torchmetrics==1.5.2
 torchdiffeq==0.2.5
 tensorboard==2.13.0
